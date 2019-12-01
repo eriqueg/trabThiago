@@ -3,6 +3,7 @@ FactoryBot.define do
       rua    { 'Av Joaquim bonetti' }
       numero { 1 }
       bairro { 'Centro' }
+      
     end
   
     

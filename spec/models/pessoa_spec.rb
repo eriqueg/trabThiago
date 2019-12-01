@@ -7,14 +7,19 @@ RSpec.describe Pessoa, type: :model do
     end
 
     context 'ao informar endereco da pessoa' do
-        let(:pessoa) { FactoryBot.create(:pessoa) }
-
-        context 'duas vezes no mesmo endereco da pessoa' do
-          let(:pessoa_repetida) { FactoryBot.build(:pessoa,
-        endereco: pessoa.endereco) }
-        end
-        it 'e no mesmo documento, deve bloquear' do
+       
+        
+        let(:cidade) { FactoryBot.create(:cidade)}
+        let(:endereco) { FactoryBot.create(:endereco, cidade: cidade)}
+        let(:pessoa) { FactoryBot.create(:pessoa, endereco: endereco) }
+        
+        context 'duas vezes com o mesmo documento' do
+          let(:pessoa_repetida) { FactoryBot.build(:pessoa, endereco: endereco, documento: pessoa.documento, 
+                                                    nome: pessoa.nome) }
+        
+        it 'deve bloquear' do
             expect(pessoa_repetida).to_not be_valid
+        end
         end
     end
 
