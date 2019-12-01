@@ -8,7 +8,7 @@ RSpec.describe Endereco, type: :model do
         it { should belong_to(:cidade) }
     
         
-      end
-    
-      
+    end
+
+
 end
