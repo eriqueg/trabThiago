@@ -22,10 +22,27 @@ RSpec.describe MovimentoEstoque, type: :model do
     
         context 'em vendas' do
           it 'deve diminuir' do
-            movimento_estoque.venda(produto, Date.today, movimento_estoque.quantidade)
+            expect(movimento_estoque.venda(produto, Date.today, movimento_estoque.quantidade)).to eq(15)
         end  
         end  
-    
+
+        context 'em compras' do
+            it 'deve aumentar'do
+            expect(movimento_estoque.compra(produto, Date.today, movimento_estoque.quantidade)).to eq(15)
+        end
+        end
+        
+        context 'em devolucao de compras' do
+            it 'deve diminuir'do
+            expect(movimento_estoque.dev_compra(produto, Date.today, movimento_estoque.quantidade)).to eq(15)
+        end
+        end
        
+        context 'em devolucao de vendas' do
+            it 'deve aumentar'do
+            expect(movimento_estoque.dev_vendas(produto, Date.today, movimento_estoque.quantidade)).to eq(15)
+        end
+        end
+
         end
 end
